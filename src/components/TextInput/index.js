@@ -6,11 +6,12 @@ const TextInput = ({
   placeholder,
   required = false,
   value,
-  onChange,
+  onAltered,
+  name,
 }) => {
   const handleChange = (event) => {
     const typedValue = event.target.value;
-    onChange(typedValue);
+    onAltered(name, typedValue);
   };
 
   return (

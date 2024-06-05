@@ -14,7 +14,7 @@ const teams = [
   "Sauber",
 ];
 
-const Form = () => {
+const Form = ({ onPersonnelRegistered }) => {
   const [formData, setFormData] = useState({
     name: "",
     role: "",
@@ -22,16 +22,17 @@ const Form = () => {
     team: "",
   });
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
+  const handleChange = (name, inputValue) => {
+    const value = inputValue;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
-
+  console.log(formData);
   const onSave = (event) => {
     event.preventDefault();
+    onPersonnelRegistered(formData);
     console.log("Form was submitted.", formData);
   };
 
@@ -45,7 +46,7 @@ const Form = () => {
           placeholder="Enter the name"
           name="name"
           value={formData.name}
-          onChange={handleChange}
+          onAltered={handleChange}
         />
         <TextInput
           required
@@ -53,14 +54,14 @@ const Form = () => {
           placeholder="Enter the role"
           name="role"
           value={formData.role}
-          onChange={handleChange}
+          onAltered={handleChange}
         />
         <TextInput
           label="Image"
           placeholder="Provide the image address"
           name="image"
           value={formData.image}
-          onChange={handleChange}
+          onAltered={handleChange}
         />
         <Dropdown
           required
@@ -68,7 +69,7 @@ const Form = () => {
           teams={teams}
           name="team"
           value={formData.team}
-          onChange={handleChange}
+          onAltered={handleChange}
         />
         <Button label="Create card" />
       </form>
