@@ -1,0 +1,12 @@
+.team {
+    text-align: center;
+    padding: 32px;
+    background-color: rgba(241, 97, 101, 0.15)
+}
+
+.team h3 {
+    font-size: 32px;
+    border-bottom: 4px solid #A6051A;
+    display: inline-block;
+    padding-bottom: 8px;
+}
