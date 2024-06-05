@@ -1,5 +1,6 @@
 import Dropdown from "../Dropdown";
 import TextInput from "../TextInput";
+import Button from "../Button";
 import "./styles.css";
 
 const Form = () => {
@@ -21,6 +22,7 @@ const Form = () => {
         <TextInput label="Role" placeholder="Enter the role" />
         <TextInput label="Image" placeholder="Provide the image address" />
         <Dropdown label="Team" values={values} />
+        <Button label="Create card" />
       </form>
     </section>
   );
