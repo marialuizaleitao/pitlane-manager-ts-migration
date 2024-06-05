@@ -1,11 +1,10 @@
 import "./styles.css";
 
-const TextInput = ({ label, placeholder }) => {
-
+const TextInput = ({ label, placeholder, required = false }) => {
   return (
     <div className="text-input">
       <label>{label}</label>
-      <input placeholder={placeholder} />
+      <input required={required} placeholder={placeholder} />
     </div>
   );
 };

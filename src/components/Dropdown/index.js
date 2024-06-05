@@ -1,13 +1,13 @@
 import "./styles.css";
 
-const Dropdown = ({ label, values }) => {
+const Dropdown = ({ label, values, required = false }) => {
   return (
     <div className="dropdown">
       <label>{label}</label>
-      <select>
-        {values.map((value) => {
-          return <option key={value}>{value}</option>;
-        })}
+      <select required={required}>
+        {values.map((value) => (
+          <option key={value}>{value}</option>
+        ))}
       </select>
     </div>
   );
