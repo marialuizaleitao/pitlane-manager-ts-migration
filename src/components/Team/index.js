@@ -1,15 +1,16 @@
 import Personnel from "../Personnel";
 import "./styles.css";
 
-const Team = (team) => {
-  const css = { backgroundColor: team.secondaryColor };
+const Team = ({ name, primaryColor, secondaryColor, staff }) => {
+  const css = { backgroundColor: secondaryColor };
 
   return (
     <section className="team" style={css}>
-      <h3 style={{ borderColor: team.primaryColor }}>{team.name}</h3>
+      <h3 style={{ borderColor: primaryColor }}>{name}</h3>
       <div className="staff">
-        {team.staff.map((personnel) => (
+        {staff.map((personnel) => (
           <Personnel
+            key={personnel.name}
             name={personnel.name}
             role={personnel.role}
             image={personnel.image}

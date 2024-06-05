@@ -13,16 +13,22 @@ const Form = ({ onPersonnelRegistered, teams }) => {
   });
 
   const handleChange = (name, inputValue) => {
-    const value = inputValue;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: inputValue,
     }));
   };
 
   const onSave = (event) => {
     event.preventDefault();
     onPersonnelRegistered(formData);
+    // Reset form data after submission
+    setFormData({
+      name: "",
+      role: "",
+      image: "",
+      team: "",
+    });
   };
 
   return (
@@ -35,7 +41,7 @@ const Form = ({ onPersonnelRegistered, teams }) => {
           placeholder="Enter the name"
           name="name"
           value={formData.name}
-          onAltered={handleChange}
+          onAltered={(name, value) => handleChange(name, value)}
         />
         <TextInput
           required
@@ -43,14 +49,14 @@ const Form = ({ onPersonnelRegistered, teams }) => {
           placeholder="Enter the role"
           name="role"
           value={formData.role}
-          onAltered={handleChange}
+          onAltered={(name, value) => handleChange(name, value)}
         />
         <TextInput
           label="Image"
           placeholder="Provide the image address"
           name="image"
           value={formData.image}
-          onAltered={handleChange}
+          onAltered={(name, value) => handleChange(name, value)}
         />
         <Dropdown
           required
@@ -58,7 +64,7 @@ const Form = ({ onPersonnelRegistered, teams }) => {
           teams={teams}
           name="team"
           value={formData.team}
-          onAltered={handleChange}
+          onAltered={(name, value) => handleChange(name, value)}
         />
         <Button label="Create card" />
       </form>

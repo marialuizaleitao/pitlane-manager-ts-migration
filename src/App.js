@@ -46,7 +46,7 @@ function App() {
   const [staff, setStaff] = useState([]);
 
   const onAddedPersonnel = (personnel) => {
-    setStaff([...staff, personnel]);
+    setStaff((prevStaff) => [...prevStaff, personnel]);
   };
 
   return (
@@ -54,7 +54,7 @@ function App() {
       <Banner />
       <Form
         teams={teams.map((team) => team.name)}
-        onPersonnelRegistered={(personnel) => onAddedPersonnel(personnel)}
+        onPersonnelRegistered={onAddedPersonnel}
       />
       {teams.map((team) => (
         <Team
