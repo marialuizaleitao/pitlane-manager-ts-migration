@@ -15,14 +15,24 @@ const teams = [
 ];
 
 const Form = () => {
-  const [name, setName] = useState("");
-  const [role, setRole] = useState("");
-  const [image, setImage] = useState("");
-  const [team, setTeam] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    role: "",
+    image: "",
+    team: "",
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   const onSave = (event) => {
     event.preventDefault();
-    console.log("Form was submitted.");
+    console.log("Form was submitted.", formData);
   };
 
   return (
@@ -33,28 +43,32 @@ const Form = () => {
           required
           label="Name"
           placeholder="Enter the name"
-          value={name}
-          onAltered={(value) => setName(value)}
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
         />
         <TextInput
           required
           label="Role"
           placeholder="Enter the role"
-          value={role}
-          onAltered={(value) => setRole(value)}
+          name="role"
+          value={formData.role}
+          onChange={handleChange}
         />
         <TextInput
           label="Image"
           placeholder="Provide the image address"
-          value={image}
-          onAltered={(value) => setImage(value)}
+          name="image"
+          value={formData.image}
+          onChange={handleChange}
         />
         <Dropdown
           required
           label="Team"
           teams={teams}
-          value={team}
-          onAltered={(team) => setTeam(team)}
+          name="team"
+          value={formData.team}
+          onChange={handleChange}
         />
         <Button label="Create card" />
       </form>

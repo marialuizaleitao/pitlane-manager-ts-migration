@@ -1,9 +1,16 @@
+import React from "react";
 import "./styles.css";
 
-const TextInput = ({ label, placeholder, required = false, value, onAltered }) => {
-  
-  const onTyped = (event) => {
-    onAltered(event.target.value);
+const TextInput = ({
+  label,
+  placeholder,
+  required = false,
+  value,
+  onChange,
+}) => {
+  const handleChange = (event) => {
+    const typedValue = event.target.value;
+    onChange(typedValue);
   };
 
   return (
@@ -11,7 +18,7 @@ const TextInput = ({ label, placeholder, required = false, value, onAltered }) =
       <label>{label}</label>
       <input
         value={value}
-        onChange={onTyped}
+        onChange={handleChange}
         required={required}
         placeholder={placeholder}
       />
