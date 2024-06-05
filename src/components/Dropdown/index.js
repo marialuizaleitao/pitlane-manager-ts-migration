@@ -1,9 +1,9 @@
 import "./styles.css";
 
-const Dropdown = ({ label, teams, required = false, value, onChange }) => {
+const Dropdown = ({ label, teams, required = false, value, name, onAltered }) => {
   const handleChange = (event) => {
     const selectedValue = event.target.value;
-    onChange(selectedValue);
+    onAltered(name, selectedValue);
   };
 
   return (

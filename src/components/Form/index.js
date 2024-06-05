@@ -4,17 +4,7 @@ import TextInput from "../TextInput";
 import Button from "../Button";
 import "./styles.css";
 
-const teams = [
-  "Ferrari",
-  "Mercedes",
-  "McLaren",
-  "Red Bull",
-  "Alpine",
-  "Aston Martin",
-  "Sauber",
-];
-
-const Form = ({ onPersonnelRegistered }) => {
+const Form = ({ onPersonnelRegistered, teams }) => {
   const [formData, setFormData] = useState({
     name: "",
     role: "",
@@ -29,7 +19,7 @@ const Form = ({ onPersonnelRegistered }) => {
       [name]: value,
     }));
   };
-  console.log(formData);
+  
   const onSave = (event) => {
     event.preventDefault();
     onPersonnelRegistered(formData);
