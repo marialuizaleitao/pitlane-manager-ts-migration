@@ -1,14 +1,14 @@
 import "./styles.css";
 
-const Personnel = () => {
+const Personnel = ({ name, role, image }) => {
   return (
     <div className="personnel">
       <div className="header">
-        <img src="https://github.com/marialuizaleitao.png" alt="" />
+        <img src={image} alt={name} />
       </div>
       <div className="footer">
-        <h4>Maria Leitão</h4>
-        <h5>Formula 1 champion</h5>
+        <h4>{name}</h4>
+        <h5>{role}</h5>
       </div>
     </div>
   );

@@ -19,11 +19,10 @@ const Form = ({ onPersonnelRegistered, teams }) => {
       [name]: value,
     }));
   };
-  
+
   const onSave = (event) => {
     event.preventDefault();
     onPersonnelRegistered(formData);
-    console.log("Form was submitted.", formData);
   };
 
   return (
