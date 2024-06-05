@@ -1,10 +1,20 @@
 import "./styles.css";
 
-const TextInput = ({ label, placeholder, required = false }) => {
+const TextInput = ({ label, placeholder, required = false, value, onAltered }) => {
+  
+  const onTyped = (event) => {
+    onAltered(event.target.value);
+  };
+
   return (
     <div className="text-input">
       <label>{label}</label>
-      <input required={required} placeholder={placeholder} />
+      <input
+        value={value}
+        onChange={onTyped}
+        required={required}
+        placeholder={placeholder}
+      />
     </div>
   );
 };
