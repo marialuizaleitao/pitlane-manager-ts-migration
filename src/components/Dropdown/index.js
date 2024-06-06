@@ -1,6 +1,13 @@
 import "./styles.css";
 
-const Dropdown = ({ label, teams, required = false, value, name, onAltered }) => {
+const Dropdown = ({
+  label,
+  teams,
+  required = false,
+  value,
+  name,
+  onAltered,
+}) => {
   const handleChange = (event) => {
     const selectedValue = event.target.value;
     onAltered(name, selectedValue);
@@ -10,6 +17,7 @@ const Dropdown = ({ label, teams, required = false, value, name, onAltered }) =>
     <div className="dropdown">
       <label>{label}</label>
       <select onChange={handleChange} required={required} value={value}>
+        <option value={""} />
         {teams.map((team) => (
           <option key={team}>{team}</option>
         ))}
