@@ -1,25 +1,37 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Dropdown from "../Dropdown";
 import TextInput from "../TextInput";
 import Button from "../Button";
 import "./styles.css";
 
-const Form = ({ onPersonnelRegistered, teams }) => {
-  const [formData, setFormData] = useState({
+interface FormData {
+  name: string;
+  role: string;
+  image: string;
+  team: string;
+}
+
+interface FormProps {
+  onPersonnelRegistered: (personnel: FormData) => void;
+  teams: string[];
+}
+
+const Form: React.FC<FormProps> = ({ onPersonnelRegistered, teams }) => {
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     role: "",
     image: "",
     team: "",
   });
 
-  const handleChange = (name, inputValue) => {
+  const handleChange = (name: string, inputValue: string) => {
     setFormData((prevData) => ({
       ...prevData,
       [name]: inputValue,
     }));
   };
 
-  const onSave = (event) => {
+  const onSave = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     onPersonnelRegistered(formData);
     // Reset form data after submission
@@ -41,7 +53,7 @@ const Form = ({ onPersonnelRegistered, teams }) => {
           placeholder="Enter the name"
           name="name"
           value={formData.name}
-          onAltered={(name, value) => handleChange(name, value)}
+          onAltered={handleChange}
         />
         <TextInput
           required
@@ -49,14 +61,14 @@ const Form = ({ onPersonnelRegistered, teams }) => {
           placeholder="Enter the role"
           name="role"
           value={formData.role}
-          onAltered={(name, value) => handleChange(name, value)}
+          onAltered={handleChange}
         />
         <TextInput
           label="Image"
           placeholder="Provide the image address"
           name="image"
           value={formData.image}
-          onAltered={(name, value) => handleChange(name, value)}
+          onAltered={handleChange}
         />
         <Dropdown
           required
@@ -64,7 +76,7 @@ const Form = ({ onPersonnelRegistered, teams }) => {
           teams={teams}
           name="team"
           value={formData.team}
-          onAltered={(name, value) => handleChange(name, value)}
+          onAltered={handleChange}
         />
         <Button label="Create card" />
       </form>
