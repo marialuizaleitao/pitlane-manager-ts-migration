@@ -51,7 +51,7 @@ function App() {
 
   return (
     <div className="App">
-      <Banner />
+      <Banner sourceImage="/img/banner.png" alternativeTxt="Main banner"/>
       <Form
         teams={teams.map((team) => team.name)}
         onPersonnelRegistered={onAddedPersonnel}
