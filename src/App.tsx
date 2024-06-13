@@ -1,11 +1,24 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Banner from "./components/Banner";
 import Form from "./components/Form";
 import Team from "./components/Team";
 import Footer from "./components/Footer";
 
-function App() {
-  const teams = [
+interface Personnel {
+  name: string;
+  role: string;
+  image: string;
+  team: string;
+}
+
+interface Team {
+  name: string;
+  primaryColor: string;
+  secondaryColor: string;
+}
+
+const App: React.FC = () => {
+  const teams: Team[] = [
     {
       name: "Ferrari",
       primaryColor: "#A6051A",
@@ -43,19 +56,16 @@ function App() {
     },
   ];
 
-  const [staff, setStaff] = useState([]);
+  const [staff, setStaff] = useState<Personnel[]>([]);
 
-  const onAddedPersonnel = (personnel) => {
+  const onAddedPersonnel = (personnel: Personnel) => {
     setStaff((prevStaff) => [...prevStaff, personnel]);
   };
 
   return (
     <div className="App">
-      <Banner sourceImage="/img/banner.png" alternativeTxt="Main banner"/>
-      <Form
-        teams={teams.map((team) => team.name)}
-        onPersonnelRegistered={onAddedPersonnel}
-      />
+      <Banner sourceImage="/img/banner.png" alternativeTxt="Main banner" />
+      <Form teams={teams.map((team) => team.name)} onPersonnelRegistered={onAddedPersonnel} />
       {teams.map((team) => (
         <Team
           key={team.name}
