@@ -1,6 +1,13 @@
+import React from "react";
 import "./styles.css";
 
-const Personnel = ({ name, role, image }) => {
+interface PersonnelProps {
+  name: string;
+  role: string;
+  image: string;
+}
+
+const Personnel: React.FC<PersonnelProps> = ({ name, role, image }) => {
   return (
     <div className="personnel">
       <div className="header">
