@@ -1,7 +1,16 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import "./styles.css";
 
-const TextInput = ({
+interface TextInputProps {
+  label: string;
+  placeholder: string;
+  required?: boolean;
+  value: string;
+  onAltered: (name: string, value: string) => void;
+  name: string;
+}
+
+const TextInput: React.FC<TextInputProps> = ({
   label,
   placeholder,
   required = false,
@@ -9,7 +18,7 @@ const TextInput = ({
   onAltered,
   name,
 }) => {
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const typedValue = event.target.value;
     onAltered(name, typedValue);
   };
